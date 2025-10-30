@@ -1,0 +1,42 @@
+# Ignore Visual Studio temporary files, build results, and personal settings
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+bin/
+obj/
+out/
+Debug/
+Release/
+
+# ASP.NET Core specific
+wwwroot/lib/
+wwwroot/node_modules/
+
+# Logs and temp files
+*.log
+*.tmp
+*.cache
+*.zip
+*.bak
+
+# Rider / JetBrains
+.idea/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+*.nuspec
+
+# Publish outputs
+publish/
+dist/
+
+# Misc
+Thumbs.db
+Desktop.ini

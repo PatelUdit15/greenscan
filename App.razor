@@ -1,0 +1,31 @@
+﻿<Router AppAssembly="@typeof(Program).Assembly" PreferExactMatches="@true">
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+    </Found>
+    <NotFound>
+        <!-- FIX: Redirects the default home page (/) to the scanner page (/scan) -->
+        <LayoutView Layout="@typeof(MainLayout)">
+            <p>
+                Redirecting to GreenScan...
+                <RedirectTo Uri="scan" />
+            </p>
+        </LayoutView>
+    </NotFound>
+</Router>
+
+<!-- Ensure RedirectTo component is defined -->
+<CustomRedirects />
+
+@code {
+    // This component definition allows the <RedirectTo> component to work inside the LayoutView
+    public class CustomRedirects : ComponentBase
+    {
+        [Inject]
+        public NavigationManager NavigationManager { get; set; } = default!;
+
+        public void RedirectTo(string uri)
+        {
+            NavigationManager.NavigateTo(uri);
+        }
+    }
+}

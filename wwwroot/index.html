@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>greenscan</title>
+    <base href="/" />
+
+    <!-- Link Tailwind CSS (Optional, but helps with the clean appearance of the scanner page) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="css/app.css" rel="stylesheet" />
+    <link href="greenscan.Client.styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="app">
+        <div class="loading-container fixed inset-0 flex items-center justify-center bg-white">
+            <div class="loading-spinner p-8 rounded-full border-4 border-indigo-500 border-t-indigo-700 animate-spin" style="width: 50px; height: 50px;"></div>
+            <p class="ml-4 text-lg text-indigo-700">Loading</p>
+        </div>
+    </div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <!-- IMPORTANT: The order of these scripts matters for the scanner -->
+    <!-- 1. Load the QuaggaJS library FIRST (Fixes: ReferenceError: Quagga is not defined) -->
+    <script src="https://cdn.jsdelivr.net/npm/quagga@0.12.1/dist/quagga.min.js"></script>
+
+    <!-- 2. Load our custom JS Interop file (which uses Quagga) -->
+    <script src="js/barcodeScanner.js"></script>
+
+    <!-- 3. Load the Blazor WebAssembly runtime -->
+    <script src="_framework/blazor.webassembly.js"></script>
+</body>
+
+</html>
